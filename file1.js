@@ -1,7 +1,6 @@
 (function () {
 
-
-	fetch('https://api.myjson.com/bins/11nzl6').then(function (res) {
+	fetch('https://api.myjson.com/bins/nfr02').then(function (res) {
 		return res.json();
 	}).then(alarms);
 
@@ -10,7 +9,10 @@
 	function find(obj) {
 		for (var key in obj) {
 			if (obj[key] instanceof Array) {
-				null_found += 1;
+				null_found += count_n(obj[key]);
+			}
+			else if (obj[key] === null) {
+				obj[key] = 'null'
 			}
 			else if (obj[key] instanceof Object) {
 				find(obj[key]);
@@ -32,4 +34,5 @@
 		}, 0);
 	}
 
-})();
+})
+();

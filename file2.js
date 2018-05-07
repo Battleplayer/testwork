@@ -1,16 +1,14 @@
 var ins = $('#in');
-var node= document.getElementsByTagName('div')[0];
+var node = document.getElementsByTagName('div')[0];
 ins.keyup(function (e) {
-	var words = new RegExp('red|green|blue');
-	if (words.test(ins.html())) {
-		ins.html(ins.html().replace(/red/, '<span class="red">red</span>'));
-		ins.html(ins.html().replace(/blue/, '<span class="blue">blue</span>'));
-		ins.html(ins.html().replace(/green/, '<span class="green">green</span>'));
-		ins.html(ins.html().replace(/blue red/, '<span class="orange">blue red</span>'));
+		ins.html(ins.html().replace(/але/g, '<span class="red">але</span>'));
+		ins.html(ins.html().replace(/або/g, '<span class="blue">або</span>'));
 
-		// placeCaretAtEnd(ins);
+		ins.html(ins.html().replace(/(.+?)\b(але або)\b /gm, '<span class="green">але або</span>'));
+		ins.html(ins.html().replace(/\s\bабо\b\sале\b/gm, '<span class="brown">або але</span>'));
+
 		placeCaretAtEnd(node);
-	}
+	
 });
 
 
